@@ -1,2 +1,2 @@
 # scala generator
-generate music scalas ([Example](./scalas.md))
+generate music scalas ([Example](./scala.md))
