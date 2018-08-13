@@ -1,28 +1,54 @@
-|scale|I|II|III|IV|V|VI|VII|VIII
-|---|---|---|---|---|---|---|---|---|
-C major|C|D|E|F|G|A|B|C|
-C minor|C|D|D#|F|G|G#|A#|C|
-C# major|C#|D#|F|F#|G#|A#|C|C#|
-C# minor|C#|D#|E|F#|G#|A|B|C#|
-D major|D|E|F#|G|A|B|C#|D|
-D minor|D|E|F|G|A|A#|C|D|
-D# major|D#|F|G|G#|A#|C|D|D#|
-D# minor|D#|F|F#|G#|A#|B|C#|D#|
-E major|E|F#|G#|A|B|C#|D#|E|
-E minor|E|F#|G|A|B|C|D|E|
-F major|F|G|A|A#|C|D|E|F|
-F minor|F|G|G#|A#|C|C#|D#|F|
-F# major|F#|G#|A#|B|C#|D#|F|F#|
-F# minor|F#|G#|A|B|C#|D|E|F#|
-G major|G|A|B|C|D|E|F#|G|
-G minor|G|A|A#|C|D|D#|F|G|
-G# major|G#|A#|C|C#|D#|F|G|G#|
-G# minor|G#|A#|B|C#|D#|E|F#|G#|
-A major|A|B|C#|D|E|F#|G#|A|
-A minor|A|B|C|D|E|F|G|A|
-A# major|A#|C|D|D#|F|G|A|A#|
-A# minor|A#|C|C#|D#|F|F#|G#|A#|
-B major|B|C#|D#|E|F#|G#|A#|B|
-B minor|B|C#|D|E|F#|G|A|B|
-C major|C|D|E|F|G|A|B|C|
-C minor|C|D|D#|F|G|G#|A#|C|
+|     scale      |  I  | II  | III | IV  |  V  | VI  | VII | VIII |
+| -------------- | --- | --- | --- | --- | --- | --- | --- | ---- |
+| C major        | C   | D   | E   | F   | G   | A   | B   | C    |
+| C# major       | C#  | D#  | F   | F#  | G#  | A#  | C   | C#   |
+| D major        | D   | E   | F#  | G   | A   | B   | C#  | D    |
+| D# major       | D#  | F   | G   | G#  | A#  | C   | D   | D#   |
+| E major        | E   | F#  | G#  | A   | B   | C#  | D#  | E    |
+| F major        | F   | G   | A   | A#  | C   | D   | E   | F    |
+| F# major       | F#  | G#  | A#  | B   | C#  | D#  | F   | F#   |
+| G major        | G   | A   | B   | C   | D   | E   | F#  | G    |
+| G# major       | G#  | A#  | C   | C#  | D#  | F   | G   | G#   |
+| A major        | A   | B   | C#  | D   | E   | F#  | G#  | A    |
+| A# major       | A#  | C   | D   | D#  | F   | G   | A   | A#   |
+| B major        | B   | C#  | D#  | E   | F#  | G#  | A#  | B    |
+| C major        | C   | D   | E   | F   | G   | A   | B   | C    |
+| C minor        | C   | D   | D#  | F   | G   | G#  | A#  | C    |
+| C# minor       | C#  | D#  | E   | F#  | G#  | A   | B   | C#   |
+| D minor        | D   | E   | F   | G   | A   | A#  | C   | D    |
+| D# minor       | D#  | F   | F#  | G#  | A#  | B   | C#  | D#   |
+| E minor        | E   | F#  | G   | A   | B   | C   | D   | E    |
+| F minor        | F   | G   | G#  | A#  | C   | C#  | D#  | F    |
+| F# minor       | F#  | G#  | A   | B   | C#  | D   | E   | F#   |
+| G minor        | G   | A   | A#  | C   | D   | D#  | F   | G    |
+| G# minor       | G#  | A#  | B   | C#  | D#  | E   | F#  | G#   |
+| A minor        | A   | B   | C   | D   | E   | F   | G   | A    |
+| A# minor       | A#  | C   | C#  | D#  | F   | F#  | G#  | A#   |
+| B minor        | B   | C#  | D   | E   | F#  | G   | A   | B    |
+| C minor        | C   | D   | D#  | F   | G   | G#  | A#  | C    |
+| C penta_major  | C   | D   | E   | --- | G   | A   | --- | C    |
+| C# penta_major | C#  | D#  | F   | --- | G#  | A#  | --- | C#   |
+| D penta_major  | D   | E   | F#  | --- | A   | B   | --- | D    |
+| D# penta_major | D#  | F   | G   | --- | A#  | C   | --- | D#   |
+| E penta_major  | E   | F#  | G#  | --- | B   | C#  | --- | E    |
+| F penta_major  | F   | G   | A   | --- | C   | D   | --- | F    |
+| F# penta_major | F#  | G#  | A#  | --- | C#  | D#  | --- | F#   |
+| G penta_major  | G   | A   | B   | --- | D   | E   | --- | G    |
+| G# penta_major | G#  | A#  | C   | --- | D#  | F   | --- | G#   |
+| A penta_major  | A   | B   | C#  | --- | E   | F#  | --- | A    |
+| A# penta_major | A#  | C   | D   | --- | F   | G   | --- | A#   |
+| B penta_major  | B   | C#  | D#  | --- | F#  | G#  | --- | B    |
+| C penta_major  | C   | D   | E   | --- | G   | A   | --- | C    |
+| C penta_minor  | C   | --- | D#  | F   | G   | --- | A#  | C    |
+| C# penta_minor | C#  | --- | E   | F#  | G#  | --- | B   | C#   |
+| D penta_minor  | D   | --- | F   | G   | A   | --- | C   | D    |
+| D# penta_minor | D#  | --- | F#  | G#  | A#  | --- | C#  | D#   |
+| E penta_minor  | E   | --- | G   | A   | B   | --- | D   | E    |
+| F penta_minor  | F   | --- | G#  | A#  | C   | --- | D#  | F    |
+| F# penta_minor | F#  | --- | A   | B   | C#  | --- | E   | F#   |
+| G penta_minor  | G   | --- | A#  | C   | D   | --- | F   | G    |
+| G# penta_minor | G#  | --- | B   | C#  | D#  | --- | F#  | G#   |
+| A penta_minor  | A   | --- | C   | D   | E   | --- | G   | A    |
+| A# penta_minor | A#  | --- | C#  | D#  | F   | --- | G#  | A#   |
+| B penta_minor  | B   | --- | D   | E   | F#  | --- | A   | B    |
+| C penta_minor  | C   | --- | D#  | F   | G   | --- | A#  | C    |

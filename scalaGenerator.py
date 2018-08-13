@@ -21,46 +21,69 @@ notes = {
     12: 'C',
 }
 
-major = {
-    0: 'major',
-    1: tom,
-    2: tom,
-    3: semitom,
-    4: tom,
-    5: tom,
-    6: tom,
-    7: semitom
-}
-minor = {
-    0: 'minor',
-    1: tom,
-    2: semitom,
-    3: tom,
-    4: tom,
-    5: semitom,
-    6: tom,
-    7: tom
-}
+def sumNote(note, period):
+    if (period + note) > 11:
+        return (period + note) - 12
+    return period + note
+
+def major(note):
+    return {
+        1: note,
+        2: sumNote(note, tom),
+        3: sumNote(note, tom + tom),
+        4: sumNote(note, tom + tom + semitom),
+        5: sumNote(note, tom + tom + semitom + tom),
+        6: sumNote(note, tom + tom + semitom + tom + tom),
+        7: sumNote(note, tom + tom + semitom + tom + tom + tom),
+        8: sumNote(note, tom + tom + semitom + tom + tom + tom + semitom),
+    }
+
+def minor(note):
+    return {
+        1: note,
+        2: sumNote(note, tom),
+        3: sumNote(note, tom + semitom),
+        4: sumNote(note, tom + semitom + tom),
+        5: sumNote(note, tom + semitom + tom + tom),
+        6: sumNote(note, tom + semitom + tom + tom + semitom),
+        7: sumNote(note, tom + semitom + tom + tom + semitom + tom),
+        8: sumNote(note, tom + semitom + tom + tom + semitom + tom + tom),
+    }
+
+def penta_major(note):
+    scale =  major(note)
+    scale[4] = 'skip'
+    scale[7] = 'skip'
+    return scale
+
+def penta_minor(note):
+    scale =  minor(note)
+    scale[2] = 'skip'
+    scale[6] = 'skip'
+    return scale
+
+def printScale(type):
+    for note in notes:
+        scale = {}
+        if type == 'major':
+            scale = major(note)
+        if type == 'minor':
+            scale = minor(note)
+        if type == 'penta_major':
+            scale = penta_major(note)
+        if type == 'penta_minor':
+            scale = penta_minor(note)
+
+        print('%s %s' % (notes[note], type), end='|')
+        for i in scale:
+            if scale[i] == 'skip':
+                print(' --- ', end='|')
+                continue
+            print(notes[scale[i]], end='|')
+        print()
 
 
-def printScale(scale, note):
-    x = note
-    for i in scale:
-        # print(x, end=' ')
-        if i == 0:
-            print('%s %s' % (notes[x], scale[i]), end='|')
-            print(notes[x], end='|')
-            continue
-        if (x + scale[i]) > 11:
-            x = (x + scale[i]) - 12
-        else:
-            x += scale[i]
-        # print(scale[i], end=' ')
-        # print(x, end=' ')
-        print(notes[x], end='|')
-    print()
-
-
-for note in notes:
-    printScale(major, note)
-    printScale(minor, note)
+printScale('major')
+printScale('minor')
+printScale('penta_major')
+printScale('penta_minor')
