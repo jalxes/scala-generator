@@ -1,89 +1,106 @@
 #!/usr/bin/env python
 
-tom = 2
-semitom = 1
-print('|scale|I|II|III|IV|V|VI|VII|VIII')
-print('|---|---|---|---|---|---|---|---|---|')
+from common import add_note, tom, semitom
 
-notes = {
-    0: 'C',
-    1: 'C#',
-    2: 'D',
-    3: 'D#',
-    4: 'E',
-    5: 'F',
-    6: 'F#',
-    7: 'G',
-    8: 'G#',
-    9: 'A',
-    10: 'A#',
-    11: 'B',
-    12: 'C',
-}
-
-def sumNote(note, period):
-    if (period + note) > 11:
-        return (period + note) - 12
-    return period + note
 
 def major(note):
-    return {
-        1: note,
-        2: sumNote(note, tom),
-        3: sumNote(note, tom + tom),
-        4: sumNote(note, tom + tom + semitom),
-        5: sumNote(note, tom + tom + semitom + tom),
-        6: sumNote(note, tom + tom + semitom + tom + tom),
-        7: sumNote(note, tom + tom + semitom + tom + tom + tom),
-        8: sumNote(note, tom + tom + semitom + tom + tom + tom + semitom),
-    }
+    return [
+        note,
+        add_note(note, tom),
+        add_note(note, tom + tom),
+        add_note(note, tom + tom + semitom),
+        add_note(note, tom + tom + semitom + tom),
+        add_note(note, tom + tom + semitom + tom + tom),
+        add_note(note, tom + tom + semitom + tom + tom + tom),
+        add_note(note, tom + tom + semitom + tom + tom + tom + semitom),
+    ]
+
+
+def pentaMajor(note):
+    scale = major(note)
+    return [
+        scale[1 - 1],
+        scale[2 - 1],
+        scale[3 - 1],
+        scale[5 - 1],
+        scale[6 - 1],
+        scale[8 - 1],
+    ]
+
+
+def bluesMajor(note):
+    scale = major(note)
+    return [
+
+        scale[1 - 1],
+        scale[2 - 1],
+        add_note(scale[2 - 1], semitom),
+        scale[3 - 1],
+        scale[5 - 1],
+        scale[6 - 1],
+        scale[8 - 1],
+    ]
+
 
 def minor(note):
+    return [
+        note,
+        add_note(note, tom),
+        add_note(note, tom + semitom),
+        add_note(note, tom + semitom + tom),
+        add_note(note, tom + semitom + tom + tom),
+        add_note(note, tom + semitom + tom + tom + semitom),
+        add_note(note, tom + semitom + tom + tom + semitom + tom),
+        add_note(note, tom + semitom + tom + tom + semitom + tom + tom),
+    ]
+
+
+def pentaMinor(note):
+    scale = minor(note)
+    return [
+        scale[1 - 1],
+        scale[3 - 1],
+        scale[4 - 1],
+        scale[5 - 1],
+        scale[7 - 1],
+        scale[8 - 1],
+    ]
+
+
+def bluesMinor(note):
+    scale = minor(note)
+    return [
+        scale[1 - 1],
+        scale[3 - 1],
+        scale[4 - 1],
+        add_note(scale[4 - 1], semitom),
+        scale[5 - 1],
+        scale[7 - 1],
+        scale[8 - 1],
+    ]
+
+
+def get_scale(scale, note):
+    if scale == 'major':
+        return {'major': major(note)}
+    if scale == 'minor':
+        return {'minor': minor(note)}
+    if scale == 'pentaMajor':
+        return {'pentaMajor': pentaMajor(note)}
+    if scale == 'pentaMinor':
+        return {'pentaMinor': pentaMinor(note)}
+    if scale == 'bluesMajor':
+        return {'bluesMajor': bluesMajor(note)}
+    if scale == 'bluesMinor':
+        return {'bluesMinor': bluesMinor(note)}
+
+
+def get_all_scales(note):
     return {
-        1: note,
-        2: sumNote(note, tom),
-        3: sumNote(note, tom + semitom),
-        4: sumNote(note, tom + semitom + tom),
-        5: sumNote(note, tom + semitom + tom + tom),
-        6: sumNote(note, tom + semitom + tom + tom + semitom),
-        7: sumNote(note, tom + semitom + tom + tom + semitom + tom),
-        8: sumNote(note, tom + semitom + tom + tom + semitom + tom + tom),
+        'major': major(note),
+        'minor': minor(note),
+        'pentaMajor': pentaMajor(note),
+        'pentaMinor': pentaMinor(note),
+        'bluesMajor': bluesMajor(note),
+        'bluesMinor': bluesMinor(note),
     }
-
-def penta_major(note):
-    scale =  major(note)
-    scale[4] = 'skip'
-    scale[7] = 'skip'
-    return scale
-
-def penta_minor(note):
-    scale =  minor(note)
-    scale[2] = 'skip'
-    scale[6] = 'skip'
-    return scale
-
-def printScale(type):
-    for note in notes:
-        scale = {}
-        if type == 'major':
-            scale = major(note)
-        if type == 'minor':
-            scale = minor(note)
-        if type == 'penta_major':
-            scale = penta_major(note)
-        if type == 'penta_minor':
-            scale = penta_minor(note)
-
-        print('%s %s' % (notes[note], type), end='|')
-        for i in scale:
-            if scale[i] == 'skip':
-                print(' --- ', end='|')
-                continue
-            print(notes[scale[i]], end='|')
-        print()
-
-
-printScale('major')
-printScale('minor')
-printScale('penta_major')
-printScale('penta_minor')
