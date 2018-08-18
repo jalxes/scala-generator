@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guitar Scale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <style>
+        table {
+            font-size: 20px;
+        }
+
+        td {
+            color: rgb(153, 153, 153);
+        }
+
+        .number {
+            color: black;
+        }
+
+        .inScale {
+            color: rgb(80, 1, 80);
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <table border=1>
+        <tbody>
+            {% for string_notes in strings %}
+            <tr>
+                <td class='number'>{{loop.index0}}</td>
+                {% for string in string_notes %}
+                <td {%if string in scale %}class='inScale' {%endif%}>
+                    {{ notes[string] }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                {% for string in scale %}
+                <td>
+                    {{ notes[string] }}
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+
+    </ul>
+
+</body>
+<script>
+    setTimeout(() => { window.location.reload() }, 5000);
+</script>
+
+</html>

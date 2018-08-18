@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pure Scale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <style>
+        table {
+            font-size: 20px;
+        }
+
+        td {
+            color: rgb(153, 153, 153);
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <table border=1>
+        <tbody>
+        {% for keys in scales %} 
+            {% for name, scale in keys.items() %}
+            <tr>
+                <td>{{name}}</td>
+                {% for note in scale %}
+                <td>
+                    {{ notes[note] }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %} 
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+<script>
+    setTimeout(() => { window.location.reload() }, 5000);
+</script>
+
+</html>

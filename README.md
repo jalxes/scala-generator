@@ -1,2 +1,3 @@
-# scala generator
-generate music scalas ([Example](./scala.md))
+# SCALA GENERATOR
+
+generate music scalas and print on html
