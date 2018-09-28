@@ -22,9 +22,9 @@ scaleContext = {
 site = Site.make_site(
     contexts=[
         ('guitar.html', guitarContext),
-        ('pure_scale.html', scaleContext)
+        ('index.html', scaleContext)
     ],
-    outpath='./rendered'
+    outpath='./docs'
 )
 
 site.render()
