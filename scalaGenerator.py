@@ -81,18 +81,18 @@ def bluesMinor(note):
 
 
 def get_scale(scale, note):
-    if scale == 'major':
-        return {'major': major(note)}
-    if scale == 'minor':
-        return {'minor': minor(note)}
-    if scale == 'pentaMajor':
-        return {'pentaMajor': pentaMajor(note)}
-    if scale == 'pentaMinor':
-        return {'pentaMinor': pentaMinor(note)}
-    if scale == 'bluesMajor':
-        return {'bluesMajor': bluesMajor(note)}
-    if scale == 'bluesMinor':
-        return {'bluesMinor': bluesMinor(note)}
+    if 'major' == scale:
+        return major(note)
+    if 'minor' == scale:
+        return minor(note)
+    if 'pentaMajor' == scale:
+        return pentaMajor(note)
+    if 'pentaMinor' == scale:
+        return pentaMinor(note)
+    if 'bluesMajor' == scale:
+        return bluesMajor(note)
+    if 'bluesMinor' == scale:
+        return bluesMinor(note)
 
 
 def get_all_scales(note):

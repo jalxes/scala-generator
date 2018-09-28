@@ -8,12 +8,15 @@ from scalaGenerator import get_scale, get_all_scales
 guitarContext = {
     "strings": get_guitar(),
     "notes": common.notes,
-    "scale": get_scale('bluesMinor', common.get_note('A'))
+    "scale": get_scale('major', common.get_note('C'))
 }
 
 scaleContext = {
     "notes": common.notes,
-    "scales": [get_all_scales(common.get_note(note)) for note in common.notes]
+    "allScales": {
+        "major": [get_scale('major', common.get_note(note)) for note in common.notes],
+        "minor": [get_scale('minor', common.get_note(note)) for note in common.notes]
+    }
 }
 
 site = Site.make_site(
