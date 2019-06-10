@@ -1,4 +1,4 @@
-#!/home/jalxes/Projects/escala-generator/bin/python
+#!/home/jalxes/Projects/scala-generator/bin/python
 
 import sys
 import getopt
