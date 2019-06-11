@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from common import add_note, tom, semitom
+from common import add_note, tom, semitom, notes, get_note
 
 
 def major(note):
@@ -104,3 +104,17 @@ def get_all_scales(note):
         'bluesMajor': bluesMajor(note),
         'bluesMinor': bluesMinor(note),
     }
+
+def get_all():
+    scale = {};
+    for note in notes:
+        scale[note] = {
+            'major': get_scale('major', get_note(note)),
+            'minor': get_scale('minor', get_note(note)),
+            'pentaMajor': get_scale('pentaMajor', get_note(note)),
+            'pentaMinor': get_scale('pentaMinor', get_note(note)),
+            'bluesMajor': get_scale('bluesMajor', get_note(note)),
+            'bluesMinor': get_scale('bluesMinor', get_note(note)),
+        }
+    return scale
+

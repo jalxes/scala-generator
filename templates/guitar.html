@@ -28,22 +28,26 @@
         .seventh {
             background-color: rgba(128, 0, 0, 0.3);
         }
+
         .fifth {
             background-color: rgba(126, 128, 0, 0.3);
         }
+
         .thirth {
             background-color: rgba(0, 128, 0, 0.3);
         }
+
         .inScale {
             color: rgb(80, 1, 80);
         }
+
         .root {
             background-color: rgba(173, 0, 173, 0.3);
         }
     </style>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -53,9 +57,7 @@
             <tr>
                 <td class='number'>{{loop.index0}}</td>
                 {% for string in string_notes %}
-                <td 
-                note={{ notes[string] }}
-                class="">
+                <td note={{ notes[string] }} class="">
                     {{ notes[string] }}
                 </td>
                 {% endfor %}
@@ -65,33 +67,36 @@
     </table>
 </body>
 <script>
-    const scale = { 
-        {%for scale in allScales['major'] 
-            %}'{{notes[scale[0]]}}':[
-                {%for note in scale[0:7] 
-                    %}'{{notes[note]}}',{% 
-                endfor%}], {%
-            endfor %} 'selected':'G' };
-    function changeScale(s) {
+    const notes = {{ jsonNotes }};
+    const allScales = {{ allScales }};
+
+    function changeScale(key, scale) {
+        selected = allScales[key][scale]
         $(".inScale").removeClass('inScale');
+        selected.forEach(e => {
+            $("[note='" + notes[e] + "']").addClass('inScale');
+        });
+
         $(".root").removeClass('root');
         $(".thirth").removeClass('thirth');
         $(".fifth").removeClass('fifth');
         $(".seventh").removeClass('seventh');
 
-        $("[note='" + scale[s][0] + "']").addClass('root');
-        $("[note='" + scale[s][2] + "']").addClass('thirth');
-        $("[note='" + scale[s][4] + "']").addClass('fifth');
-        $("[note='" + scale[s][6] + "']").addClass('seventh');
+        colorNotes = allScales[key]['minor']
+        if (['major', 'pentaMajor', 'bluesMajor'].includes(scale)) {
+            colorNotes = allScales[key]['major']
+        }
 
-        scale[s].forEach(e => {
-            $("[note='" + e + "']").addClass('inScale');
-        });
+        $(".inScale[note='" + notes[colorNotes[0]] + "']").addClass('root');
+        $(".inScale[note='" + notes[colorNotes[2]] + "']").addClass('thirth');
+        $(".inScale[note='" + notes[colorNotes[4]] + "']").addClass('fifth');
+        $(".inScale[note='" + notes[colorNotes[6]] + "']").addClass('seventh');
+
+
     }
 
-    $(document).ready(()=>{
-        s = scale['selected'];
-        changeScale(s);
+    $(document).ready(() => {
+        changeScale('G', 'major');
     });
 
 </script>
